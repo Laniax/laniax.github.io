@@ -1,0 +1,62 @@
+<html>
+<head>
+	<title>Coord viewer</title>
+
+	<link rel="stylesheet" href="./css/style.css">
+
+	<!--<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+	<script type="text/javascript" src="./js/WorldMap.js"></script>
+	<script type="text/javascript" src="./js/raphael-min.js"></script>
+
+</head>
+<body>
+	<div class="wrapper">
+		<div class="world-map">
+			<img src="./images/osrs_world_map_april_2015.png"/>
+		</div>
+	</div>
+</body>
+<footer>
+<script type="text/javascript">
+
+var world_map = new WorldMap();
+var paper = Raphael(0, 0, 5952, 5376);
+
+
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.open("GET","mesh.dat",false);
+xmlhttp.send();
+xmlDoc=xmlhttp.responseXML;
+
+var x=xmlDoc.getElementsByTagName("MeshSquare");
+for (i=0;i<x.length;i++)
+{ 
+	var northx = x[i].getElementsByTagName("north-x")[0].childNodes[0].nodeValue;
+	var northy = x[i].getElementsByTagName("north-y")[0].childNodes[0].nodeValue;
+	var southx = x[i].getElementsByTagName("south-x")[0].childNodes[0].nodeValue;
+	var southy = x[i].getElementsByTagName("south-y")[0].childNodes[0].nodeValue;
+	
+	var north = world_map.coordsToPoint(northx, northy);
+	var south = world_map.coordsToPoint(southx, southy);
+  
+	var width = south.x - north.x;
+	var height = south.y - north.y;
+						  //x,    y,      width, height
+	var rect = paper.rect(north.x, north.y, width, height);
+	
+	// Sets the fill attribute of the circle to red (#f00)
+	rect.attr("fill", "#079c00");
+	rect.attr("fill-opacity", "0.2");
+	// Sets the stroke attribute of the circle to white
+	rect.attr("stroke", "#0cff00");
+}
+</script>
+</footer>
+</html>

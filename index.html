@@ -1,0 +1,52 @@
+<html>
+<head>
+	<title>Coord viewer</title>
+
+	<link rel="stylesheet" href="./css/style.css">
+
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/WorldMap.js"></script>
+	<script type="text/javascript" src="./js/jquery.dragscrollable.js"></script>
+
+</head>
+<body>
+	<div class="wrapper">
+		<div class="world-map">
+			<img src="./images/runescape-map-24-july-07.jpg"/>
+			<div class="coord-box">
+				<span id="coords"></span>
+			</div>
+		</div>
+	</div>
+</body>
+<footer>
+<script type="text/javascript">
+
+var obs_point = {x: 913, y: 2123};
+var world_map = new WorldMap();
+world_map.setObservatoryPoint(obs_point);
+
+$(document).ready(function(){
+	
+	$(".world-map").dragscrollable();
+	
+	$(".world-map > :first").bind("mousemove", function(event)
+	{
+		var parentOffset = $(this).offset(); 
+		//or $(this).offset(); if you really just want the current element's offset
+		var x = event.pageX - parentOffset.left + $(this).scrollLeft();
+		var y = event.pageY - parentOffset.top + $(this).scrollTop();
+	
+		x = Math.ceil(x);
+		y = Math.ceil(y);
+		
+		/* convert x and y to latitude and longitude */
+		coords = world_map.pointToCoords(x, y);
+		
+		$("#coords").html(world_map.formatCoords(coords.latitude, coords.longitude));
+	});
+});
+	
+</script>
+</footer>
+</html>

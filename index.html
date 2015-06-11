@@ -14,6 +14,10 @@
 	<div class="wrapper">
 		<div class="world-map">
 			<img src="./images/osrs_world_map_april_2015.png"/>
+			<div class="info-box">
+			Note that representation might not be 100% accurate.<br>
+			Small areas are not drawn due to performance.
+			</div>
 		</div>
 	</div>
 </body>
@@ -40,25 +44,19 @@ $(document).ready(function() {
 		
 		var width = south.x - north.x;
 		var height = south.y - north.y;
-							  //x,    y,      width, height
-		var rect = paper.rect(north.x, north.y, width, height);
+		
+		if (width  > 0 && height > 0) {
+								  //x,    y,      width, height
+			var rect = paper.rect(north.x, north.y, width, height);
 
-		// Sets the fill attribute of the circle to red (#f00)
-		rect.attr("fill", "#079c00");
-		rect.attr("fill-opacity", "0.2");
-		// Sets the stroke attribute of the circle to white
-		rect.attr("stroke", "#0cff00");
+			// Sets the fill attribute of the circle to red (#f00)
+			rect.attr("fill", "#079c00");
+			rect.attr("fill-opacity", "0.2");
+			// Sets the stroke attribute of the circle to white
+			rect.attr("stroke", "#0cff00");
+			}
 		});
 	});
-	
-	
-	var rect = paper.rect(100,100, 200, 200);
-		
-		// Sets the fill attribute of the circle to red (#f00)
-		rect.attr("fill", "#079c00");
-		rect.attr("fill-opacity", "0.2");
-		// Sets the stroke attribute of the circle to white
-		rect.attr("stroke", "#0cff00");
 });
 
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

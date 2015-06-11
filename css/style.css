@@ -15,3 +15,13 @@
 	background-color:white; 
 	border:0;
 }
+
+.info-box {
+	position: fixed;
+	top:20px;
+	left:20px;
+	width: 200px;
+	height: 75px;
+	background-color:white;
+	padding: 20px;
+}

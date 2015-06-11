@@ -43,6 +43,8 @@ $(document).ready(function() {
 							  //x,    y,      width, height
 		var rect = paper.rect(north.x, north.y, width, height);
 		
+		console.warn("Square created at x:"+north.x+" y:"+north.y);
+		
 		// Sets the fill attribute of the circle to red (#f00)
 		rect.attr("fill", "#079c00");
 		rect.attr("fill-opacity", "0.2");
@@ -50,6 +52,15 @@ $(document).ready(function() {
 		rect.attr("stroke", "#0cff00");
 		});
 	});
+	
+	
+	var rect = paper.rect(100,100, 200, 200);
+		
+		// Sets the fill attribute of the circle to red (#f00)
+		rect.attr("fill", "#079c00");
+		rect.attr("fill-opacity", "0.2");
+		// Sets the stroke attribute of the circle to white
+		rect.attr("stroke", "#0cff00");
 });
 </script>
 </footer>

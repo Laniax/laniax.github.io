@@ -30,10 +30,10 @@ $(document).ready(function() {
 	
 		var $square = $(this);
 		
-		var northx = parseInt($square.attr('north-x'));
-		var northy = parseInt($square.attr('north-y'));
-		var southx = parseInt($square.attr('south-x'));
-		var southy = parseInt($square.attr('south-y'));
+		var northx = parseInt($square.attr('north-x').text());
+		var northy = parseInt($square.attr('north-y').text());
+		var southx = parseInt($square.attr('south-x').text());
+		var southy = parseInt($square.attr('south-y').text());
 		
 		var north = world_map.coordsToPoint(northx, northy);
 		var south = world_map.coordsToPoint(southx, southy);

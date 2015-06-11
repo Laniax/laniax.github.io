@@ -38,16 +38,11 @@ $(document).ready(function() {
 		var north = world_map.coordsToPoint(northx, northy);
 		var south = world_map.coordsToPoint(southx, southy);
 		
-		
-		console.warn("Square at x:"+northx+" y:"+northy);
-	  
 		var width = south.x - north.x;
 		var height = south.y - north.y;
 							  //x,    y,      width, height
 		var rect = paper.rect(north.x, north.y, width, height);
-		
-		console.warn("Square created at x:"+north.x+" y:"+north.y);
-		
+
 		// Sets the fill attribute of the circle to red (#f00)
 		rect.attr("fill", "#079c00");
 		rect.attr("fill-opacity", "0.2");

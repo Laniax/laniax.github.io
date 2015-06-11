@@ -37,6 +37,9 @@ $(document).ready(function() {
 		
 		var north = world_map.coordsToPoint(northx, northy);
 		var south = world_map.coordsToPoint(southx, southy);
+		
+		
+		console.warn("Square at x:"+northx+" y:"+northy);
 	  
 		var width = south.x - north.x;
 		var height = south.y - north.y;

@@ -4,17 +4,19 @@
 
 	<link rel="stylesheet" href="./css/style.css">
 
-	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
 	<script type="text/javascript" src="./js/WorldMap.js"></script>
-	<script type="text/javascript" src="./js/jquery.dragscrollable.js"></script>
+	<script type="text/javascript" src="./js/raphael-min.js"></script>
 
 </head>
 <body>
 	<div class="wrapper">
 		<div class="world-map">
-			<img src="./images/runescape-map-24-july-07.jpg"/>
-			<div class="coord-box">
-				<span id="coords"></span>
+			<img src="./images/osrs_world_map_april_2015.png"/>
+			<div class="info-box">
+			Note that representation might not be 100% accurate.<br>
+			Small areas are not drawn due to performance.
 			</div>
 		</div>
 	</div>
@@ -22,31 +24,49 @@
 <footer>
 <script type="text/javascript">
 
-var obs_point = {x: 913, y: 2123};
 var world_map = new WorldMap();
-world_map.setObservatoryPoint(obs_point);
+var paper = Raphael(0, 0, 5952, 5376);
 
-$(document).ready(function(){
+$(document).ready(function() {
+	$.get('mesh.dat', function(d) {
 	
-	$(".world-map").dragscrollable();
+	$(d).find('MeshSquare').each(function() {
 	
-	$(".world-map > :first").bind("mousemove", function(event)
-	{
-		var parentOffset = $(this).offset(); 
-		//or $(this).offset(); if you really just want the current element's offset
-		var x = event.pageX - parentOffset.left + $(this).scrollLeft();
-		var y = event.pageY - parentOffset.top + $(this).scrollTop();
-	
-		x = Math.ceil(x);
-		y = Math.ceil(y);
+		var $square = $(this);
 		
-		/* convert x and y to latitude and longitude */
-		coords = world_map.pointToCoords(x, y);
+		var northx = parseInt($square.find('north-x').text());
+		var northy = parseInt($square.find('north-y').text());
+		var southx = parseInt($square.find('south-x').text());
+		var southy = parseInt($square.find('south-y').text());
 		
-		$("#coords").html(world_map.formatCoords(coords.latitude, coords.longitude));
+		var north = world_map.coordsToPoint(northx, northy);
+		var south = world_map.coordsToPoint(southx, southy);
+		
+		var width = south.x - north.x;
+		var height = south.y - north.y;
+		
+		if (width  > 0 && height > 0) {
+								  //x,    y,      width, height
+			var rect = paper.rect(north.x, north.y, width, height);
+
+			// Sets the fill attribute of the circle to red (#f00)
+			rect.attr("fill", "#079c00");
+			rect.attr("fill-opacity", "0.2");
+			// Sets the stroke attribute of the circle to white
+			rect.attr("stroke", "#0cff00");
+			}
+		});
 	});
 });
-	
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64012133-1', 'auto');
+  ga('send', 'pageview');
+
 </script>
 </footer>
 </html>

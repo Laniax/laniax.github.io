@@ -8,16 +8,18 @@
 
 	<script type="text/javascript" src="./js/WorldMap.js"></script>
 	<script type="text/javascript" src="./js/raphael-min.js"></script>
+	<script type="text/javascript" src="./js/jquery.kinetic.min.js"></script>
 
 </head>
 <body>
 	<div class="wrapper">
 		<div class="world-map">
 			<img src="./images/osrs_world_map_april_2015.png"/>
-			<div class="info-box">
+			
+		</div>
+		<div class="info-box">
 			Note that representation might not be 100% accurate.<br>
 			Small areas are not drawn due to performance.
-			</div>
 		</div>
 	</div>
 </body>
@@ -26,6 +28,8 @@
 
 var world_map = new WorldMap();
 var paper = Raphael(0, 0, 5952, 5376);
+
+$('body').kinetic();
 
 $(document).ready(function() {
 	$.get('mesh.dat', function(d) {

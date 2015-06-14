@@ -34,14 +34,14 @@ $('body').kinetic();
 $(document).ready(function() {
 	$.get('mesh.dat', function(d) {
 	
-	$(d).find('MeshSquare').each(function() {
+	$(d).find('S').each(function() {
 	
 		var $square = $(this);
 		
-		var northx = parseInt($square.find('north-x').text());
-		var northy = parseInt($square.find('north-y').text());
-		var southx = parseInt($square.find('south-x').text());
-		var southy = parseInt($square.find('south-y').text());
+		var northx = parseInt($square.find('nx').text());
+		var northy = parseInt($square.find('ny').text());
+		var southx = parseInt($square.find('sx').text());
+		var southy = parseInt($square.find('sy').text());
 		
 		var north = world_map.coordsToPoint(northx, northy);
 		var south = world_map.coordsToPoint(southx, southy);

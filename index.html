@@ -1,76 +1,102 @@
+<!DOCTYPE HTML>
 <html>
-<head>
-	<title>Coord viewer</title>
+	<head>
+		<title>Laniax</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body id="top">
 
-	<link rel="stylesheet" href="./css/style.css">
+		<!-- Header -->
+			<header id="header">
+				<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
+				<h1><strong>I am Laniax</strong><br />
+				A PHP Backend Developer<br />
+				with roots in C++, C# &amp; Java.</h1>
+			</header>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
-	<script type="text/javascript" src="./js/WorldMap.js"></script>
-	<script type="text/javascript" src="./js/raphael-min.js"></script>
-	<script type="text/javascript" src="./js/jquery.kinetic.min.js"></script>
-
-</head>
-<body>
-	<div class="wrapper">
-		<div class="world-map">
-			<img src="./images/osrs_world_map_april_2015.png"/>
+		<!-- Main -->
+			<div id="main">
 			
-		</div>
-		<div class="info-box">
-			Note that representation might not be 100% accurate.<br>
-			Small areas are not drawn due to performance.
-		</div>
-	</div>
-</body>
-<footer>
-<script type="text/javascript">
+			<p>I mostly make what i personally need or if it's technically challenging enough to keep me interested. <br />I'm always in to help people with their problems, throw me a PM on the forums or add me on skype!</p>
+			
+				<section id="one">
+					<h2>Recent Work</h2>
+					<ul class="alt">
+								<li>
+									<header>
+										<h5>AdvancedWalking</h5>
+										<p>The successor of Tribot's WebWalking, uses a navmesh instead. With support for banks, agility shortcuts &amp; teleports. A thread with more info Soon&trade;.</p>
+										<ul class="actions small">
+										<li><a href="./NavMesh/index.html" class="button special small">NavMesh Graph</a></li>
+									</header>
+								</li>
+						</ul>
+				</section>
+				<!-- One -->
+					<section id="two">
+						
+							<h2>Scripts</h2>
+							<ul class="alt">
+								<li>
+									<header>
+										<h5>[LAN] ChaosKiller</h5>
+										<p>Kills Chaos Druids above ardougne for combat exp + herbs.<br />Get it on the <a href="https://tribot.org/repository/script/id/276">Repository</a> and check the <a href="https://tribot.org/forums/topic/22590-abcl-10lanchaoskiller-%E2%99%A6-flawless-%E2%99%A6-kills-chaos-druids-above-ardougne-%E2%99%A6-freeopen-source/">Thread</a> for more info. <a href="https://github.com/Tribot-07-Scripts/LANChaosKiller">[Open Source]</a></p>
+									</header>
+								</li>
+								<li>
+									<header>
+										<h5>[LAN] ScriptTools</h5>
+										<p>An advanced background script that is very usefull for script writers!<br />Get it on the <a href="https://tribot.org/repository/script/id/1196">Repository</a> and check the <a href="https://tribot.org/forums/topic/46415-lan-scripttools-advanced-tools-to-make-scripting-easier-open-source/">Thread</a> for more info. <a href="https://github.com/Tribot-07-Scripts/LANScriptTools">[Open Source]</a></p>
+									</header>
+								</li>
+								<li>
+									<header>
+										<h5>[LAN] OgreRanger <span style="color:blue;">[BETA]</span></h5>
+										<p>A simple but efficient ogre ranger with looting, banking, multi-locations and more.<br />Get it on the <a href="https://tribot.org/repository/script/id/932">Repository</a> and check the <a href="https://tribot.org/forums/topic/40607-dev-lans-ogre-ranger-nice-robust-ranger-multi-locations-beta-available/">Thread</a> for more info. <a href="https://github.com/Laniax/Tribot-07-Scripts/tree/master/%5BLAN%5D%20OgreRanger">[Open Source]</a></p>
+									</header>
+								</li>
+								<li>
+									<header>
+										<h5>[LAN] AIOQuester <span style="color:red;">[OUTDATED, UPDATE IN PROGRESS]</span></h5>
+										<p>Complete quests without lifting a finger, supports chaining, banking and more.<br />Get it on the <a href="https://tribot.org/repository/script/id/315">Repository</a> and check the <a href="https://tribot.org/forums/topic/23703-lan-aioquester-beta-available/">Thread</a> for more info.</p>
+									</header>
+								</li>
+							</ul>
+					</section>
 
-var world_map = new WorldMap();
-var paper = Raphael(0, 0, 5952, 5376);
+				<!-- Two -->
+					<section id="three">
+						<h2>Misc</h2>
+						<ul class="alt">
+								<li>
+									<header>
+										<h5>Dynamic Signatures</h5>
+										<p>Adding dynamic signatures has never been easier! Used by the majority of scripters.<br />Check the <a href="https://tribot.org/forums/topic/25185-dynamic-signatures-everything-youll-need/">Thread</a> for more info. <a href="https://github.com/Tribot-07-Scripts/LANDynamicSignatures">[Open Source]</a></p>
+									</header>
+								</li>
+						</ul>
+					</section>
+			</div>
 
-$('body').kinetic();
+		<!-- Footer -->
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="skype:lan.iax?add" class="icon fa-skype"><span class="label">Skype</span></a></li>
+					<li><a href="https://github.com/Tribot-07-Scripts" class="icon fa-github"><span class="label">Github</span></a></li>
+				</ul>
+			</footer>
 
-$(document).ready(function() {
-	$.get('https://dl.dropboxusercontent.com/u/21676524/mesh.dat', function(d) {
-	
-	$(d).find('S').each(function() {
-	
-		var $square = $(this);
-		
-		var northx = parseInt($square.find('nx').text());
-		var northy = parseInt($square.find('ny').text());
-		var southx = parseInt($square.find('sx').text());
-		var southy = parseInt($square.find('sy').text());
-		
-		var north = world_map.coordsToPoint(northx, northy);
-		var south = world_map.coordsToPoint(southx, southy);
-		
-		var width = south.x - north.x;
-		var height = south.y - north.y;
-		
-		if (width  > 0 && height > 0) {
-								  //x,    y,      width, height
-			var rect = paper.rect(north.x, north.y, width, height);
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
 
-			// Sets the fill attribute of the circle to red (#f00)
-			rect.attr("fill", "#079c00");
-			rect.attr("fill-opacity", "0.2");
-			// Sets the stroke attribute of the circle to white
-			rect.attr("stroke", "#0cff00");
-			}
-		});
-	});
-});
-
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-64012133-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-</footer>
+	</body>
 </html>

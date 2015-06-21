@@ -1,0 +1,76 @@
+<html>
+<head>
+	<title>Coord viewer</title>
+
+	<link rel="stylesheet" href="./css/style.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+	<script type="text/javascript" src="./js/WorldMap.js"></script>
+	<script type="text/javascript" src="./js/raphael-min.js"></script>
+	<script type="text/javascript" src="./js/jquery.kinetic.min.js"></script>
+
+</head>
+<body>
+	<div class="wrapper">
+		<div class="world-map">
+			<img src="./images/osrs_world_map_april_2015.png"/>
+			
+		</div>
+		<div class="info-box">
+			Note that representation might not be 100% accurate.<br>
+			Small areas are not drawn due to performance.
+		</div>
+	</div>
+</body>
+<footer>
+<script type="text/javascript">
+
+var world_map = new WorldMap();
+var paper = Raphael(0, 0, 5952, 5376);
+
+$('body').kinetic();
+
+$(document).ready(function() {
+	$.get('https://dl.dropboxusercontent.com/u/21676524/mesh.dat', function(d) {
+	
+	$(d).find('S').each(function() {
+	
+		var $square = $(this);
+		
+		var northx = parseInt($square.find('nx').text());
+		var northy = parseInt($square.find('ny').text());
+		var southx = parseInt($square.find('sx').text());
+		var southy = parseInt($square.find('sy').text());
+		
+		var north = world_map.coordsToPoint(northx, northy);
+		var south = world_map.coordsToPoint(southx, southy);
+		
+		var width = south.x - north.x;
+		var height = south.y - north.y;
+		
+		if (width  > 0 && height > 0) {
+								  //x,    y,      width, height
+			var rect = paper.rect(north.x, north.y, width, height);
+
+			// Sets the fill attribute of the circle to red (#f00)
+			rect.attr("fill", "#079c00");
+			rect.attr("fill-opacity", "0.2");
+			// Sets the stroke attribute of the circle to white
+			rect.attr("stroke", "#0cff00");
+			}
+		});
+	});
+});
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64012133-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</footer>
+</html>

@@ -39,6 +39,11 @@ $(document).ready(function() {
 	
 		var $square = $(this);
 		
+		var plane = parseInt($square.find('p').text());
+		
+		if (plane != '0')
+			return;
+			
 		var northx = parseInt($square.find('nx').text());
 		var northy = parseInt($square.find('ny').text());
 		var southx = parseInt($square.find('sx').text());
@@ -53,11 +58,8 @@ $(document).ready(function() {
 		if (width  > 0 && height > 0) {
 								  //x,    y,      width, height
 			var rect = paper.rect(north.x, north.y, width, height);
-
-			// Sets the fill attribute of the circle to red (#f00)
 			rect.attr("fill", "#079c00");
 			rect.attr("fill-opacity", "0.2");
-			// Sets the stroke attribute of the circle to white
 			rect.attr("stroke", "#0cff00");
 			}
 		});
